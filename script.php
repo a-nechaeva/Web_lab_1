@@ -1,22 +1,20 @@
-<?php ?>
+<?php
+function isHit() {
+    $x = $_POST['x'];
+    $y = $_POST['y'];
+    $r = $_POST['r'];
 
-<! DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="utf-8">
-        <title>first_try</title>
-        <style>
-            /* здесь будет код на css */
-            .head {
-                background-color: rgb(30, 30, 30);
-                color: rosybrown;
-                font-family: Cursive;
-            }
-        </style>
-    </head>
-    <body class="head">
-        <header>
-            <h1>Нечаева Анна Анатольевна, гр R3238, #1418</h1>
-        </header>
-    </body>
-</html>
+    $hit = false;
+    if (-$r / 2 <= $x && $x <= 0 && $y >= 0 && $y <= $r)
+        $hit = true;
+
+    if ($x >= 0 && $y <= 0 && $y >= ($r / 2 - 1 / 2))
+        $hit = true;
+
+    if ($x <= 0 && $y <= 0 && (pow($x, 2) + pow($y, 2)) <= pow($r, 2))
+        $hit = true;
+
+    return $hit;
+
+
+}
