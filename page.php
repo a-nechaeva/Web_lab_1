@@ -1,4 +1,5 @@
-<?php ?>
+<?php
+include "script.php"?>
 
 <! DOCTYPE html>
 <html lang="ru">
