@@ -3,7 +3,6 @@ function isHit() {
     $x = $_POST['x'];
     $y = $_POST['y'];
     $r = $_POST['r'];
-
     $hit = false;
     if (-$r / 2 <= $x && $x <= 0 && $y >= 0 && $y <= $r)
         $hit = true;
@@ -15,6 +14,4 @@ function isHit() {
         $hit = true;
 
     return $hit;
-
-
 }
