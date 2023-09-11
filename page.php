@@ -39,9 +39,37 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
                 /* задаем границу*/
                 border-color: antiquewhite;
                 border-radius: 20px;
+                /* внешний отступ на всех 4 сторонах элемента */
                 margin: auto;
-                /* 
+                /* внутренние отступы от границ элемента до его содержимого */
                 padding: 5px;
+            }
+            .centering {
+                text-align: center;
+                margin: auto;
+            }
+            .fillingLocation {
+                width: 100%;
+                height: 100%;
+            }
+
+            #requestAnswer {
+                text-align: center;
+                width: 100%;
+                height: 90%;
+            }
+            .requestAnswerTableBlockLeft {
+                text-align: right;
+                padding-right: 10%;
+                width: 50%;
+            }
+            .requestAnswerTableBlockRight {
+                text-align: left;
+                padding-left: 10%;
+                width: 50%;
+            }
+            .answer {
+
             }
 
         </style>
@@ -64,7 +92,34 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
             </tr>
             <tr>
                 <td>
-
+                    <div class="interface-block">
+                        <img src="area.png" alt = "Проблемы с загрузкой картинки :(">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php if (isset($in_area)) { ?>
+                    <div class="interface-block" style="border-color: antiquewhite">
+                        <table class="centering fillingLocation">
+                            <tr>
+                                <td>
+                                    <div>
+                                        Результат:
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <?php
+                                /* выводит выражения */
+                                echo "<table id='requestAnswer' class='centering'>";
+                                echo "<tr><td class='requestAnswerTableBlockLeft'>r:</td><td class='requestAnswerTableBlockRight'>
+<span class=''
+</td>"
+                                ?>
+                            </tr>
+                        </table>
+                    </div> }
                 </td>
             </tr>
         </table>
