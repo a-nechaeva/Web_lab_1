@@ -71,14 +71,94 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
             .answer {
 
             }
+            #rPadding {
+                text-align: left;
+                padding-left: 117px;
+            }
+            /* кто такой этот ваш ховер */
+            #rPadding:hover {
+                text-align: left;
+                padding-left: 113px;
+            }
+            #xPadding {
+                text-align: left;
+                padding-left: 30px;
+            }
+            #xPadding:hover {
+                text-align: left;
+                padding-left: 26px;
+            }
+            #yPadding {
+                text-align: left;
+                padding-left: 130px;
+            }
+            #yPadding:hover {
+                text-align: left;
+                padding-left: 126px;
+            }
+            .clickedElement {
+                color: aqua;
+                background: antiquewhite;
+            }
+            .clickedElement:hover {
+                color: aquamarine;
+                cursor: pointer;
+                padding: 4px;
+            }
+
+            .selectedClickedElement {
+                color: aliceblue;
+            }
+            .selectedClickedElement:hover {
+                cursor: pointer;
+                padding: 4px;
+                color: blue;
+            }
+            #yTextField {
+                color: rosybrown;
+                font-weight: bold;
+                text-align: center;
+            }
+            .selectingAreas {
+                border: 1px solid;
+                border-color: pink;
+                border-radius: 3px;
+                background-color: bisque;
+            }
+            .selectingAreas:hover {
+                cursor: pointer;
+                border-color: aqua;
+            }
+            #submitDiv {
+                border: 1px solid;
+                border-color: bisque;
+                border-radius: 15px;
+                margin: 10px;
+                padding: 5px;
+            }
+            #submitDiv:hover {
+                border-color: pink;
+            }
+            #submitButton {
+                background: aliceblue;
+                border: 0px solid;
+            }
+            #exceptionField {
+                font-weight: normal;
+                color: aquamarine;
+            }
+            .savedRequestTableBorder {
+                border: 1px solid;
+                border-color: blue;
+            }
 
         </style>
     </head>
-    <body class="head">
+    <body class="basic" style="color: aquamarine">
     <header>
         <h1>Нечаева Анна Анатольевна, R3238, #1418</h1>
     </header>
-
+<main id="main" class="invisible">
     <!-- здесь начинается форма, метод HTTP "POST" -->
     <form method="post">
         <!-- дальше рисуем табличку -->
@@ -150,7 +230,129 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
                                     <tr>
                                         <td>
                                             <!-- здесь я остановилась -->
-                                            <span id=""
+                                            <span id="rTitle">Параметр r</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="rPadding">
+                                            <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="r" tabindex="1"
+                                                placeholder="Параметр r"
+                                                value="1">
+                                                <span>1</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="r" tabindex="1"
+                                                       placeholder="Параметр r"
+                                                       value="2">
+                                                <span>2</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="r" tabindex="1"
+                                                       placeholder="Параметр r"
+                                                       value="3">
+                                                <span>3</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="r" tabindex="1"
+                                                       placeholder="Параметр r"
+                                                       value="4">
+                                                <span>4</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="r" tabindex="1"
+                                                       placeholder="Параметр r"
+                                                       value="5">
+                                                <span>5</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            <span id="xTitle">Параметр x</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="xPadding">
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                placeholder="Параметр x"
+                                                value="-4">
+                                                <span>-4</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                       placeholder="Параметр x"
+                                                       value="-3">
+                                                <span>-3</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                       placeholder="Параметр x"
+                                                       value="-2">
+                                                <span>-2</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                       placeholder="Параметр x"
+                                                       value="-1">
+                                                <span>-1</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                       placeholder="Параметр x"
+                                                       value="0">
+                                                <span>0</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                       placeholder="Параметр x"
+                                                       value="1">
+                                                <span>1</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                       placeholder="Параметр x"
+                                                       value="2">
+                                                <span>2</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                       placeholder="Параметр x"
+                                                       value="3">
+                                                <span>3</span>
+                                            </span>
+                                            <span class="clickedElement">
+                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
+                                                       placeholder="Параметр x"
+                                                       value="4">
+                                                <span>4</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table class="fillingLocation">
+                                    <tr>
+                                        <td>
+                                            <span id="yTitle">Параметр y</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="yPadding">
+                                            <input id="yTextField" class="selectingAreas" type="text" name="y"
+                                            tabindex="3"
+                                            placeholder="(-5;3)">
                                         </td>
                                     </tr>
                                 </table>
@@ -160,7 +362,57 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
                 </div>
             </td>
         </tr>
+        <tr>
+            <td>
+                <div id="submitDiv" class="">
+                    <button id="submitButton" class="fillingLocation" type="submit">
+                        <table class="fillingLocation">
+                            <tr>
+                                <td>
+                                    <span id="exceptionField"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="basic" style="font-size: x-large">Проверить точку</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br><br><br>
+            </td>
+        </tr>
+        <?php
+        if (isset($_POST['savedRequests'])) {
+            echo "<tr><td><span>Предыдущие результаты:</span></td>";
+            echo "<tr><td>";
+            echo "<table id='savedRequestTable' class='centering fillingLocation savedRequestTableBorder'>";
+            echo "<tr><td class='savedRequestTableBorder'>x</td><td class='savedRequestTableBorder'>y</td><td class='savedRequestTableBorder'>r</td>
+<td class='savedRequestTableBorder'>Попала</td><td class='savedRequestTableBorder'>Время выполнения</td></tr>";
+
+            $savedRequests = $_POST['savedRequests'];
+            $savedRequests = explode(";", $savedRequests);
+            for ($i = 0; $i < count($savedRequests); $i++) {
+                $parameters = explode(",", $savedRequests[$i]);
+                echo "<tr class='request'>";
+                for ($j = 0; $j < count($parameters); $j++) {
+                    echo "<td class='parameter saved RequestsTableBorder'>$parameters[$j]</td>";
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
+            echo "</tr></td>";
+        }
+        ?>
+
         </table>
     </form>
+    </main>
+    <script src="src/checker.js"></script>
     </body>
 </html>
