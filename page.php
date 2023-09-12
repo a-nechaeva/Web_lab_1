@@ -109,19 +109,57 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <td>
+                                <td>
                                 <?php
                                 /* выводит выражения */
                                 echo "<table id='requestAnswer' class='centering'>";
                                 echo "<tr><td class='requestAnswerTableBlockLeft'>r:</td><td class='requestAnswerTableBlockRight'>
-<span class=''
-</td>"
+<span class='answer' id='r'>" .$_POST['r'] . "</span>
+</td></tr>";
+                                echo "<tr><td class='requestAnswerTableBlockLeft'>x:</td><td class='requestAnswerTableBlockRight'>
+<span class='answer' id='x'>" .$_POST['x'] . "</span></td></tr>";
+                                echo "<tr><td class='requestAnswerTableBlockLeft'>y:</td><td class='requestAnswerTableBlockRight'>
+<span class='answer' id='y'>" .$_POST['y'] . "</span></td></tr>";
+                                if($in_area == "true") {
+                                    echo "<tr><td class='requestAnswerTableBlockLeft'>Попала:</td><td class='requestAnswerTableBlockRight'>
+<span class='answer' id='In_area'>" . "Да" . "</span></td></tr>";
+                                } else {
+                                    echo "<tr><td class='requestAnswerTableBlockLeft'>Попала:</td><td class='requestAnswerTableBlockRight'>
+<span class='answer' id='In_area'>" . "Нет" . "</span></td></tr>";
+                                }
+                                $stop_time = microtime(true);
+                                echo "<tr><td class='requestAnswerTableBlockLeft'>Время работы:</td>
+<td class='requestAnswerTableBlockRight'><span class='answer' id='PhpWorkingtime'>" . ($stop_time - $start_time) . " мкс" . "</span></td></tr>";
+                                echo "</table>";
                                 ?>
+                            </td>
                             </tr>
                         </table>
-                    </div> }
+                    </div>
+        <?php } ?>
                 </td>
             </tr>
+        <tr>
+            <td>
+                <div class="interface-block">
+                    <table class="fillingLocation">
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            <!-- здесь я остановилась -->
+                                            <span id=""
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
         </table>
     </form>
     </body>

@@ -14,5 +14,9 @@ function isHit() {
     if ($x <= 0 && $y <= 0 && (pow($x, 2) + pow($y, 2)) <= pow($r, 2))
         $hit = true;
 
-    return $hit;
+    if($hit) {
+        return "true";
+    } else {
+        return "false";
+    }
 }
