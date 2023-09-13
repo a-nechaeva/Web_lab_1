@@ -1,9 +1,9 @@
 <?php
 /* эта функция проверяет, попала ли точка в заданную область */
 function isHit() {
-    $x = $_POST['x'];
-    $y = $_POST['y'];
-    $r = $_POST['r'];
+    $x = $_POST['X'];
+    $y = $_POST['Y'];
+    $r = $_POST['R'];
     $hit = false;
     if (-$r / 2 <= $x && $x <= 0 && $y >= 0 && $y <= $r)
         $hit = true;

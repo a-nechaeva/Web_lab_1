@@ -2,7 +2,7 @@
 include "script.php";
 /* проверяем, инициализированы ли переменные */
 if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
-    $start_time = microtime(true);
+    $start_time = microtime(true) * 1000000;
     /* заводим переменную, отвечающую за попадание точки в область */
     $in_area = isHit();
 }
@@ -15,26 +15,47 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
         <title>first_try</title>
         <style>
             /* здесь будет код на css */
-            .centering {
 
-            }
-            .basic {
-                background-color: rgb(30, 30, 30);
-                text-align: center;
-            }
-            /* внешний вид шапки, см ТЗ */
-            /* пример селектора класса -- может присваиваться любому кол-ву элементов */
-            .head {
+            /* нужен псевдоэлемент :с  */
+
+            /* header div и div -- селекторы потомств */
+            /* здесь же задан общий вид шапки, см тз */
+
+            header div {
                 text-align: center;
                 background-color: rgb(30, 30, 30);
                 color: aquamarine;
                 font-family: Cursive;
-                font-size: 20px;
+                font-size: 40px;
             }
+            div {
+                text-align: center;
+                margin: auto;
+            }
+
+            .centering {
+                text-align: center;
+                margin: auto;
+            }
+            .basic {
+                background-color: rgb(30, 30, 30);
+                text-align: center;
+                font-size: x-large;
+            }
+            .invisible {
+                visibility: hidden;
+            }
+
+            .visible {
+                visibility: visible;
+                position: static;
+            }
+
             /* пример селектора идентификатора -- может присваиваться только 1 элементу */
             #clock {
                 color: aqua;
                 font-size: 40px;
+                font-family: Cursive;
                 font-weight: bold;
             }
 
@@ -78,7 +99,10 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                 text-align: left;
                 padding-left: 117px;
             }
-            /* кто такой этот ваш ховер */
+
+            /* селектор псевдокласса :hover */
+            /* псевдокласс в css -- ключевое слово, добавленное к селектору, которое определяет его особое состояние*/
+
             #rPadding:hover {
                 text-align: left;
                 padding-left: 113px;
@@ -101,7 +125,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
             }
             .clickedElement {
                 color: aqua;
-                background: darkgray;
+                background: background-color: rgb(30, 30, 30);;
             }
             .clickedElement:hover {
                 color: aqua;
@@ -126,7 +150,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                 border: 1px solid;
                 border-color: blue;
                 border-radius: 3px;
-                background-color: darkgray;
+                background-color: background-color: rgb(30, 30, 30);;
             }
             .selectingAreas:hover {
                 cursor: pointer;
@@ -143,7 +167,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                 border-color: pink;
             }
             #submitButton {
-                background: aliceblue;
+                background: darkgray;
                 border: 0px solid;
             }
             #exceptionField {
@@ -155,13 +179,15 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                 border-color: blue;
             }
 
+
         </style>
     </head>
     <body class="basic" style="color: aqua">
-    <header class="head">
-        <h1>Нечаева Анна Анатольевна, R3238, #1418</h1>
+    <header>
+        <div>Нечаева Анна Анатольевна, R3238</div>
     </header>
-<main id="main" class="invisible">
+    <div> Вариант 1418</div>
+<main id="main" class="visible">
     <!-- здесь начинается форма, метод HTTP "POST" -->
     <form method="post">
         <!-- дальше рисуем табличку -->
@@ -192,18 +218,18 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                                     </div>
                                 </td>
                             </tr>
-                            <td>
+                            <tr>
                                 <td>
                                 <?php
                                 /* выводит выражения */
                                 echo "<table id='requestAnswer' class='centering'>";
-                                echo "<tr><td class='requestAnswerTableBlockLeft'>r:</td><td class='requestAnswerTableBlockRight'>
-<span class='answer' id='r'>" .$_POST['r'] . "</span>
+                                echo "<tr><td class='requestAnswerTableBlockLeft'>R:</td><td class='requestAnswerTableBlockRight'>
+<span class='answer' id='r'>" .$_POST['R'] . "</span>
 </td></tr>";
-                                echo "<tr><td class='requestAnswerTableBlockLeft'>x:</td><td class='requestAnswerTableBlockRight'>
-<span class='answer' id='x'>" .$_POST['x'] . "</span></td></tr>";
-                                echo "<tr><td class='requestAnswerTableBlockLeft'>y:</td><td class='requestAnswerTableBlockRight'>
-<span class='answer' id='y'>" .$_POST['y'] . "</span></td></tr>";
+                                echo "<tr><td class='requestAnswerTableBlockLeft'>X:</td><td class='requestAnswerTableBlockRight'>
+<span class='answer' id='x'>" .$_POST['X'] . "</span></td></tr>";
+                                echo "<tr><td class='requestAnswerTableBlockLeft'>Y:</td><td class='requestAnswerTableBlockRight'>
+<span class='answer' id='y'>" .$_POST['Y'] . "</span></td></tr>";
                                 if($in_area == "true") {
                                     echo "<tr><td class='requestAnswerTableBlockLeft'>Попала:</td><td class='requestAnswerTableBlockRight'>
 <span class='answer' id='In_area'>" . "Да" . "</span></td></tr>";
@@ -232,38 +258,38 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                                 <table width="100%">
                                     <tr>
                                         <td>
-                                            <span id="rTitle">Параметр r</span>
+                                            <span id="rTitle">Параметр R</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td id="rPadding">
                                             <span class="clickedElement">
-                                                <input class="rRadio" type="radio" name="r" tabindex="1"
-                                                placeholder="Параметр r"
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                placeholder="Параметр R"
                                                 value="1">
                                                 <span>1</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="rRadio" type="radio" name="r" tabindex="1"
-                                                       placeholder="Параметр r"
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
                                                        value="2">
                                                 <span>2</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="rRadio" type="radio" name="r" tabindex="1"
-                                                       placeholder="Параметр r"
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
                                                        value="3">
                                                 <span>3</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="rRadio" type="radio" name="r" tabindex="1"
-                                                       placeholder="Параметр r"
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
                                                        value="4">
                                                 <span>4</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="rRadio" type="radio" name="r" tabindex="1"
-                                                       placeholder="Параметр r"
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
                                                        value="5">
                                                 <span>5</span>
                                             </span>
@@ -278,62 +304,62 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                                 <table width="100%">
                                     <tr>
                                         <td>
-                                            <span id="xTitle">Параметр x</span>
+                                            <span id="xTitle">Параметр X</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td id="xPadding">
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                placeholder="Параметр X"
                                                 value="-4">
                                                 <span>-4</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                       placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                       placeholder="Параметр X"
                                                        value="-3">
                                                 <span>-3</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                       placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                       placeholder="Параметр X"
                                                        value="-2">
                                                 <span>-2</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                       placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                       placeholder="Параметр X"
                                                        value="-1">
                                                 <span>-1</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                       placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                       placeholder="Параметр X"
                                                        value="0">
                                                 <span>0</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                       placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                       placeholder="Параметр X"
                                                        value="1">
                                                 <span>1</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                       placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                       placeholder="Параметр X"
                                                        value="2">
                                                 <span>2</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                       placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                       placeholder="Параметр X"
                                                        value="3">
                                                 <span>3</span>
                                             </span>
                                             <span class="clickedElement">
-                                                <input class="xCheckbox" type="checkbox" name="x" tabindex="2"
-                                                       placeholder="Параметр x"
+                                                <input class="xRadio" type="radio" name="X" tabindex="2"
+                                                       placeholder="Параметр X"
                                                        value="4">
                                                 <span>4</span>
                                             </span>
@@ -347,12 +373,12 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                                 <table class="fillingLocation">
                                     <tr>
                                         <td>
-                                            <span id="yTitle">Параметр y</span>
+                                            <span id="yTitle">Параметр Y</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td id="yPadding">
-                                            <input id="yTextField" class="selectingAreas" type="text" name="y"
+                                            <input id="yTextField" class="selectingAreas" type="text" name="Y"
                                             tabindex="3"
                                             placeholder="(-5;3)">
                                         </td>
@@ -394,7 +420,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
             echo "<tr><td><span>Предыдущие результаты:</span></td>";
             echo "<tr><td>";
             echo "<table id='savedRequestTable' class='centering fillingLocation savedRequestTableBorder'>";
-            echo "<tr><td class='savedRequestTableBorder'>x</td><td class='savedRequestTableBorder'>y</td><td class='savedRequestTableBorder'>r</td>
+            echo "<tr><td class='savedRequestTableBorder'>X</td><td class='savedRequestTableBorder'>Y</td><td class='savedRequestTableBorder'>R</td>
 <td class='savedRequestTableBorder'>Попала</td><td class='savedRequestTableBorder'>Время выполнения</td></tr>";
 
             $savedRequests = $_POST['savedRequests'];
@@ -416,6 +442,6 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
     </form>
     </main>
    <!-- <script src="src/checker.js"></script> -->
-    <script src="src/checker.js"></script>
+    <script src="C:\Users\user\Desktop\Web_Programming\Lab_1\Web_lab_1\src\checker.js"></script>
     </body>
 </html>
