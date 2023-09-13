@@ -1,7 +1,7 @@
 <?php
 include "script.php";
 /* проверяем, инициализированы ли переменные */
-if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
+if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
     $start_time = microtime(true);
     /* заводим переменную, отвечающую за попадание точки в область */
     $in_area = isHit();
@@ -15,6 +15,9 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
         <title>first_try</title>
         <style>
             /* здесь будет код на css */
+            .centering {
+
+            }
             .basic {
                 background-color: rgb(30, 30, 30);
                 text-align: center;
@@ -24,20 +27,20 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
             .head {
                 text-align: center;
                 background-color: rgb(30, 30, 30);
-                color: rosybrown;
+                color: aquamarine;
                 font-family: Cursive;
-                font-size: 24px;
+                font-size: 20px;
             }
             /* пример селектора идентификатора -- может присваиваться только 1 элементу */
             #clock {
-                color: antiquewhite;
-                font-size: 24px;
+                color: aqua;
+                font-size: 40px;
                 font-weight: bold;
             }
 
             .interface-block {
                 /* задаем границу*/
-                border-color: antiquewhite;
+                border-color: aquamarine;
                 border-radius: 20px;
                 /* внешний отступ на всех 4 сторонах элемента */
                 margin: auto;
@@ -98,10 +101,10 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
             }
             .clickedElement {
                 color: aqua;
-                background: antiquewhite;
+                background: darkgray;
             }
             .clickedElement:hover {
-                color: aquamarine;
+                color: aqua;
                 cursor: pointer;
                 padding: 4px;
             }
@@ -115,15 +118,15 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
                 color: blue;
             }
             #yTextField {
-                color: rosybrown;
+                color: blue;
                 font-weight: bold;
                 text-align: center;
             }
             .selectingAreas {
                 border: 1px solid;
-                border-color: pink;
+                border-color: blue;
                 border-radius: 3px;
-                background-color: bisque;
+                background-color: darkgray;
             }
             .selectingAreas:hover {
                 cursor: pointer;
@@ -154,8 +157,8 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
 
         </style>
     </head>
-    <body class="basic" style="color: aquamarine">
-    <header>
+    <body class="basic" style="color: aqua">
+    <header class="head">
         <h1>Нечаева Анна Анатольевна, R3238, #1418</h1>
     </header>
 <main id="main" class="invisible">
@@ -229,7 +232,6 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
                                 <table width="100%">
                                     <tr>
                                         <td>
-                                            <!-- здесь я остановилась -->
                                             <span id="rTitle">Параметр r</span>
                                         </td>
                                     </tr>
@@ -413,6 +415,7 @@ if(isset($_POST['r']) && isset($_POST['x']) && isset($_POST['y'])) {
         </table>
     </form>
     </main>
+   <!-- <script src="src/checker.js"></script> -->
     <script src="src/checker.js"></script>
     </body>
 </html>

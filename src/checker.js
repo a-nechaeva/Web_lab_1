@@ -158,6 +158,68 @@ function checkIsRSelected() {
     if (!checked) {
         let exceptionField = document.getElementById("exceptionField");
         exceptionField.innerText = exceptionField.innerText + "Необходимо выбрать параметр r \n";
-        
+        document.getElementById("rTitle").classList.add("selectedText");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkYParameter() {
+    let yTextField = document.getElementById("yTextField");
+    document.getElementById("yTitle").classList.remove("selectedText");
+    if (yTextField.value === "") {
+        let exceptionField = document.getElementById("exceptionField");
+        exceptionField.innerText = exceptionField.innerText + "Необходимо задать параметр x \n";
+        document.getElementById("yTitle").classList.add("selectedText");
+
+        return false;
+    }
+    if ((String)(yTextField.value).length > 6) {
+        let exceptionField = document.getElementById("exceptionField");
+        exceptionField.innerText = exceptionField.innerText + "Слишком длинное число?";
+        return false;
+    }
+    if (isNaN(yTextField.value)) {
+        let exceptionField = document.getElementById("exceptionField");
+        exceptionField.innerText = exceptionField.innerText + "Координата y должна быть числом \n ";
+        document.getElementById("yTitle").classList.add("selectedText");
+        return false;
+    }
+    if (! (-5 < parseFloat(yTextField.value) && parseFloat(yTextField.value) < 3)) {
+        let exceptionField = document.getElementById("exceptionField");
+        exceptionField.innerText = exceptionField.innerText + "Параметр Y должен быть в диапазоне (-5, 3) \n";
+        document.getElementById("yTitle").classList.add("selectedText");
+        return false;
+    }
+    return true;
+}
+function isSelectedOneXCheckBox() {
+    let documentElement = document.documentElement;
+    let checkboxes = documentElement.getElementsByClassName("xCheckbox");
+    let checkboxCounter = 0;
+    for (let checkbox of checkboxes) {
+        if (checkbox.checked) {
+            checkboxCounter;
+        }
+    }
+    document.getElementById("xTitle").classList.remove("selectedText");
+    if (checkboxCounter > 1) {
+        let exceptionField = document.getElementById("exceptionField");
+        exceptionField.innerText = exceptionField.innerText + "Выберите только 1 X \n";
+        document.getElementById("xTitle").classList.add("selectedText");
+        for (let checkbox of checkboxes) {
+            checkbox.checked = false;
+        }
+        return false;
+    } else {
+        if (checkboxCounter === 0) {
+            let exceptionField = document.getElementById("exceptionField");
+            exceptionField.innerText = exceptionField.innerText + "Необходимо выбрать 1 X \n";
+            document.getElementById("xTitle").classList.add("selectedtext");
+            return false;
+        } else {
+            return true;
+        }
     }
 }
