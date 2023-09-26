@@ -24,13 +24,13 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
             header div {
                 text-align: center;
                 background-color: rgb(30, 30, 30);
-                color: aquamarine;
-                font-family: Cursive;
+                color: darkcyan;
                 font-size: 40px;
             }
             div {
                 text-align: center;
                 margin: auto;
+                font-family: Cursive;
             }
 
             .centering {
@@ -53,7 +53,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
 
             /* пример селектора идентификатора -- может присваиваться только 1 элементу */
             #clock {
-                color: aqua;
+                color: darkgray;
                 font-size: 40px;
                 font-family: Cursive;
                 font-weight: bold;
@@ -61,7 +61,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
 
             .interface-block {
                 /* задаем границу*/
-                border-color: aquamarine;
+                border-color: darkorange;
                 border-radius: 20px;
                 /* внешний отступ на всех 4 сторонах элемента */
                 margin: auto;
@@ -84,7 +84,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
             }
             .requestAnswerTableBlockLeft {
                 text-align: right;
-                padding-right: 10%;
+                padding-right: 10%; /* ИСПРАВИТЬ НА ПИКСИЛИ!!!!! */
                 width: 50%;
             }
             .requestAnswerTableBlockRight {
@@ -100,94 +100,103 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                 padding-left: 117px;
             }
 
-            /* селектор псевдокласса :hover */
-            /* псевдокласс в css -- ключевое слово, добавленное к селектору, которое определяет его особое состояние*/
-
-            #rPadding:hover {
-                text-align: left;
-                padding-left: 113px;
-            }
             #xPadding {
                 text-align: left;
                 padding-left: 30px;
             }
-            #xPadding:hover {
-                text-align: left;
-                padding-left: 26px;
-            }
+
             #yPadding {
                 text-align: left;
                 padding-left: 130px;
             }
-            #yPadding:hover {
-                text-align: left;
-                padding-left: 126px;
-            }
+
             .clickedElement {
-                color: aqua;
+                color: lightblue;
                 background: background-color: rgb(30, 30, 30);;
             }
             .clickedElement:hover {
-                color: aqua;
+                color: black;
                 cursor: pointer;
-                padding: 4px;
+               /* padding: 4px; */
+                background-color: lightblue;
             }
 
-            .selectedClickedElement {
-                color: aliceblue;
+            .xClicked {
+
             }
-            .selectedClickedElement:hover {
-                cursor: pointer;
-                padding: 4px;
-                color: blue;
+            .xClicked:hover {
+
+                background-color: darkcyan;
             }
+
+
             #yTextField {
-                color: blue;
+                color: lightblue;
                 font-weight: bold;
                 text-align: center;
+                background-color: rgb(30, 30, 30);;
+            }
+            /* селектор псевдокласса :hover */
+            /* псевдокласс в css -- ключевое слово, добавленное к селектору, которое определяет его особое состояние*/
+
+            #yTextField:hover {
+                color: black;
+                background-color: lightblue;
+                border-color: lavender;
             }
             .selectingAreas {
                 border: 1px solid;
-                border-color: blue;
+                border-color: lightblue;
                 border-radius: 3px;
-                background-color: background-color: rgb(30, 30, 30);;
+                background-color: lightblue;
+                color: black;
             }
             .selectingAreas:hover {
-                cursor: pointer;
-                border-color: aqua;
+                cursor: text;
+                border-color: lavender;
             }
             #submitDiv {
-                border: 1px solid;
-                border-color: bisque;
-                border-radius: 15px;
+                border: 1px;
+                border-color: rgb(30, 30, 30);
+                /*border-radius: 15px;
+
+                 */
                 margin: 10px;
                 padding: 5px;
             }
             #submitDiv:hover {
-                border-color: pink;
+                border-color: lightblue;
             }
-            #submitButton {
-                background: darkgray;
-                border: 0px solid;
+            .submitButton {
+                background-color: rgb(30, 30, 30);
+                border: 0px;
+                color: lightblue;
+            }
+            .submitButton:hover {
+                background-color: lightblue;
+                color: black;
             }
             #exceptionField {
-                font-weight: normal;
+
                 color: aquamarine;
             }
             .savedRequestTableBorder {
                 border: 1px solid;
-                border-color: blue;
+                border-color: lightblue;
+            }
+            #xSelecterStyle {
+                background-color: lightblue;
             }
 
 
         </style>
     </head>
-    <body class="basic" style="color: aqua">
-    <header>
+    <body class="basic" style="color: lightblue">
+    <header id = "header">
         <div>Нечаева Анна Анатольевна, R3238</div>
     </header>
     <div> Вариант 1418</div>
-<main id="main" class="visible">
+<main id="main" class="invisible">
     <!-- здесь начинается форма, метод HTTP "POST" -->
     <form method="post">
         <!-- дальше рисуем табличку -->
@@ -208,6 +217,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
             </tr>
             <tr>
                 <td>
+                    <!-- ЭТОТ СКРИПТ ВЫВОДИТ ПОСЛЕДНИЙ РЕЗУЛЬТАТ ПОСЛЕДНЕГО ОТПРАВЛЕННОГО ЗАПРОСА -->
                     <?php if (isset($in_area)) { ?>
                     <div class="interface-block" style="border-color: antiquewhite">
                         <table class="centering fillingLocation">
@@ -266,7 +276,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                                             <span class="clickedElement">
                                                 <input class="rRadio" type="radio" name="R" tabindex="1"
                                                 placeholder="Параметр R"
-                                                value="1">
+                                                value="1" required>
                                                 <span>1</span>
                                             </span>
                                             <span class="clickedElement">
@@ -301,7 +311,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
 
                         <tr>
                             <td>
-                                <table width="100%">
+                                <table >
                                     <tr>
                                         <td>
                                             <span id="xTitle">Параметр X</span>
@@ -309,60 +319,18 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                                     </tr>
                                     <tr>
                                         <td id="xPadding">
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                placeholder="Параметр X"
-                                                value="-4">
-                                                <span>-4</span>
-                                            </span>
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                       placeholder="Параметр X"
-                                                       value="-3">
-                                                <span>-3</span>
-                                            </span>
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                       placeholder="Параметр X"
-                                                       value="-2">
-                                                <span>-2</span>
-                                            </span>
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                       placeholder="Параметр X"
-                                                       value="-1">
-                                                <span>-1</span>
-                                            </span>
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                       placeholder="Параметр X"
-                                                       value="0">
-                                                <span>0</span>
-                                            </span>
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                       placeholder="Параметр X"
-                                                       value="1">
-                                                <span>1</span>
-                                            </span>
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                       placeholder="Параметр X"
-                                                       value="2">
-                                                <span>2</span>
-                                            </span>
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                       placeholder="Параметр X"
-                                                       value="3">
-                                                <span>3</span>
-                                            </span>
-                                            <span class="clickedElement">
-                                                <input class="xRadio" type="radio" name="X" tabindex="2"
-                                                       placeholder="Параметр X"
-                                                       value="4">
-                                                <span>4</span>
-                                            </span>
+                                            <select name="X" id = "xSelecterStyle"  required = "required" size="3">
+                                                <option class="xClicked" value="-4">-4</option>
+                                                <option class="xClicked" value="-3">-3</option>
+                                                <option class="xClicked" value="-2">-2</option>
+                                                <option class="xClicked" value="-1">-1</option>
+                                                <option class="xClicked" value="0">0</option>
+                                                <option class="xClicked" value="1">1</option>
+                                                <option class="xClicked" value="2">2</option>
+                                                <option class="xClicked" value="3">3</option>
+                                                <option class="xClicked" value="4">4</option>
+                                            </select>
+
                                         </td>
                                     </tr>
                                 </table>
@@ -380,7 +348,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                                         <td id="yPadding">
                                             <input id="yTextField" class="selectingAreas" type="text" name="Y"
                                             tabindex="3"
-                                            placeholder="(-5;3)">
+                                            placeholder="(-5;3)" required>
                                         </td>
                                     </tr>
                                 </table>
@@ -392,20 +360,20 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
         </tr>
         <tr>
             <td>
-                <div id="submitDiv" class="">
-                    <button id="submitButton" class="fillingLocation" type="submit">
-                        <table class="fillingLocation">
-                            <tr>
-                                <td>
-                                    <span id="exceptionField"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="basic" style="font-size: x-large">Проверить точку</span>
-                                </td>
-                            </tr>
-                        </table>
+                <div id="submitDiv">
+                    <button class="submitButton" class="fillingLocation" type="submit">
+                      <!--  <table class="fillingLocation"> -->
+                        <!-- <tr>-->
+                        <!-- <td>-->
+                                 <span id="exceptionField"></span>
+                        <!--  </td>-->
+                        <!-- </tr>-->
+                       <!--  <tr>-->
+                        <!--   <td>-->
+                               <span class="submitButton" style="font-size: x-large" >Проверить точку</span>
+                         <!--  </td> -->
+                       <!--  </tr>-->
+                    <!-- </table> -->
                     </button>
                 </div>
             </td>
@@ -441,7 +409,6 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
         </table>
     </form>
     </main>
-   <!-- <script src="src/checker.js"></script> -->
-    <script src="C:\Users\user\Desktop\Web_Programming\Lab_1\Web_lab_1\src\checker.js"></script>
+    <script src="src/checker.js"></script>
     </body>
 </html>

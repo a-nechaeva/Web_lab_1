@@ -93,10 +93,10 @@ function checkBeforeSubmit() {
     document.getElementById("exceptionField").innerText = "";
 
     let rAllRight = checkIsRSelected();
-    let xAllRight = isSelectedOneXCheckbox();
+    let xAllRight = checkIsXSelected();
     let yAllRight = checkYParameter();
 
-    if (rAllRight && xAllRight && yAllRight) {
+    if (rAllRight && yAllRight && xAllRight) {
         addLastRequestsParameters();
         return true;
     } else {
