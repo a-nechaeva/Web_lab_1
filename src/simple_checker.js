@@ -1,105 +1,84 @@
-$(document).ready(function() {
-    if (localStorage.getItem("results") != null) {
-        let localData = JSON.parse(localStorage.getItem("results"));
-        localData.map(item => addResultRow(item));
+function showError(input, message) {
+    // get the form-field element
+    const formField = input.parentElement;
+    // add the error class
+    formField.classList.remove('success');
+    formField.classList.add('error');
+
+    // show the error message
+    const error = formField.querySelector('small');
+    error.textContent = message;
+}
+
+function showSuccess(input) {
+    // get the form-field element
+    const formField = input.parentElement;
+    // add the error class
+    formField.classList.remove('error');
+    formField.classList.add('success');
+
+    // show the error message
+    const error = formField.querySelector('small');
+    error.textContent = '';
+}
+
+function check_x() {
+    let valid = false;
+
+    const xElements = document.querySelectorAll('input[name="x[]"]:checked');
+    if (xElements.length == 1) {
+        showSuccess(xElements[0]);
+        valid = true;
+    } else {
+        showError(document.querySelector('input[name="x[]"]'), "Please, select exactly 1 checkbox");
+        valid = false;
     }
-});
-
-/*
-* Filling the X and R inputs
-* */
-const valuesX = ['-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3'];
-const valuesR = ['1', '1.5', '2', '2.5', '3'];
-for (const number of valuesX) {
-    $('#options_x')
-        .append(`<input type="checkbox" id="${number}" name="x[]" value="${number}" form="request-form">`)
-        .append(`<label for="${number}">${number}</label>`);
-}
-for (const number of valuesR) {
-    $('#options_r')
-        .append(`<input type="radio" id="${number}" name="r" value="${number}" form="request-form" ${(number==='1') ? 'checked' : ''}>`)
-        .append(`<label for="${number}">${number}</label>`);
+    return valid;
 }
 
+function check_y() {
+    let valid = false;
 
-/*
-* validate input
-* */
-function validateY(input) {
-    let val = parseFloat(input);
-    if (isNaN(input))
-        return false;
-
-    return (val >= -5 && val <= 3);
-}
-
-function validateInput() {
-    var validX, validY, validR;
-    validY = validateY($('input#y').val());
-
-    validX = $('input:checkbox').filter(':checked').length > 0;
-    validR = $('input:radio').filter(':checked').length === 1;
-
-    $('#submit-btn').attr('disabled', !(validX && validY && validR));
-
-    return validX && validY && validR;
-}
-
-
-/*
-* send data async
-* */
-$('#request-form').submit(function (event) {
-    event.preventDefault();
-    if (!validateInput()) {
-        alert('at least one checkbox selected, the radio selected and a nice number for Y');
-        return;
+    const yElement = document.getElementById("y");
+    const y = yElement.value;
+    if (isNaN(y) || isNaN(parseFloat(y))) {
+        showError(yElement, "Please, enter number");
+        valid = false;
+    } else if (parseFloat(y) < -5 || parseFloat(y) > 5) {
+        showError(yElement, "Please, enter number in range {-5, 5}");
+        valid = false;
+    } else {
+        showSuccess(yElement);
+        valid = true;
     }
-
-    let action = "handler.php";
-    let data = $(this).serialize();
-
-    $.post(action, data, function (response) {
-        if (response.RESULT_CODE === '0') {
-            drawCanvas();
-            response.RESULTS.map(item => {
-                addToLocalStorage(item);
-                addResultRow(item);
-                drawPoint(item.x, item.y, item.r);
-            });
-        } else {
-            alert(response.RESULTS);
-            console.log(response.RESULTS);
-        }
-    });
-});
-
-
-function addToLocalStorage(item) {
-    let localData = localStorage.getItem("results");
-    localData = localData ? JSON.parse(localData) : [];
-    localData.push(item);
-    localStorage.setItem("results", JSON.stringify(localData));
+    // if (!(new RegExp("[+-]?([0-9]*[.])?[0-9]+").test(y))) {
+    //     showError(yElement, "Please, enter number");
+    //     valid = false;
+    // } else if (parseFloat(y) < -5 || parseFloat(y) > 5) {
+    //     showError(yElement, "Please, enter number in range {-5, 5}");
+    //     valid = false;
+    // } else {
+    //     showSuccess(yElement);
+    //     valid = true;
+    // }
+    return valid;
 }
 
+function check_r() {
+    let valid = false;
 
-/*
-* Adding results to the table
-* */
-function addResultRow(response) {
-    let rowStyle = (response.result === 'true') ? 'green-row' : 'red-row';
-    $('.results-table #results_table_body').append(
-        "<tr>" +
-        "<td>" + response.x + "</td>" +
-        "<td>" + response.y + "</td>" +
-        "<td>" + response.r + "</td>" +
-        "<td class="+ rowStyle +">" + response.result + "</td>" +
-        "<td>" + response.currentTime + "</td>" +
-        "<td>" + response.computedTime + "</td>" +
-        "</tr>"
-    );
+    const rElements = document.querySelectorAll('input[name="r[]"]:checked');
+    if (rElements.length == 1) {
+        showSuccess(rElements[0]);
+        valid = true;
+    } else {
+        showError(document.querySelector('input[name="r[]"]'), "Please, select exactly 1 checkbox");
+        valid = false;
+    }
+    return valid;
 }
 
-$(window).resize(drawCanvas)
-$(window).on("load", drawCanvas)
-$("input:radio").change(drawCanvas)
+function validate_form() {
+    let isXValid = check_x(), isYValid = check_y(), isRValid = check_r();
+    return isXValid && isYValid && isRValid;
+}

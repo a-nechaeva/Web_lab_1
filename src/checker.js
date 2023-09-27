@@ -7,6 +7,7 @@ for (let clickedElement of clickedElements) {
                 clickedElement.classList.remove("selectedClickedElement");
                 clickedElement.classList.add("clickedElement");
             } else {
+
                 clickedElement.classList.remove("clickedElement");
                 clickedElement.classList.add("selectedClickedElement");
             }
@@ -41,6 +42,7 @@ let submitDiv = document.getElementById("submitDiv");
 submitDiv.onclick = function () {
     document.getElementById("submitButton").click();
 }
+
 if (document.getElementById("requestAnswer") === null) {
     startAnimation();
 } else {
@@ -71,6 +73,7 @@ function startAnimation() {
             return;
         }
         draw(timePassed);
+
     }, 20);
 
     function draw(timePassed) {
@@ -87,16 +90,19 @@ window.onload = function () {
     }, 1000);
 };
 
-var lastrequest = saveLastRequestsParameters();
+var lastRequests = saveLastRequestsParameters();
+
+
 
 function checkBeforeSubmit() {
+
     document.getElementById("exceptionField").innerText = "";
 
     let rAllRight = checkIsRSelected();
     let xAllRight = checkIsXSelected();
     let yAllRight = checkYParameter();
 
-    if (rAllRight && yAllRight && xAllRight) {
+    if (rAllRight && yAllRight) {
         addLastRequestsParameters();
         return true;
     } else {
@@ -190,8 +196,9 @@ function checkYParameter() {
     }
     return true;
 }
+
 function checkIsXSelected() {
-    let xRadios = document.documentElement.getElementsByClassName("xRadio");
+    let xRadios = document.documentElement.getElementsByClassName("xClicked");
     let checked;
     for (let xRadio of xRadios) {
         if (xRadio.checked) {
@@ -209,4 +216,6 @@ function checkIsXSelected() {
         return true;
     }
 }
+
+
 
