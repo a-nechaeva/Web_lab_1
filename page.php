@@ -247,7 +247,7 @@ if(isset($_POST['R']) && isset($_POST['X']) && isset($_POST['Y'])) {
                                             echo "<tr><td class='requestAnswerTableBlockLeft'>Попала:</td><td class='requestAnswerTableBlockRight'>
 <span class='answer' id='In_area'>" . "Нет" . "</span></td></tr>";
                                         }
-                                        $stop_time = microtime(true);
+                                        $stop_time = microtime(true) * 1000000;
                                         echo "<tr><td class='requestAnswerTableBlockLeft'>Время работы:</td>
 <td class='requestAnswerTableBlockRight'><span class='answer' id='PhpWorkingtime'>" . ($stop_time - $start_time) . " мкс" . "</span></td></tr>";
                                         echo "</table>";
