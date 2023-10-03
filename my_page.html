@@ -31,6 +31,18 @@
             font-size: 50px;
             font-family: Cursive;
         }
+        .xClicked {
+            background-color: hotpink;
+        }
+        .xClicked:hover {
+            background-color: pink;
+        }
+        #xSelectorStyle {
+            background-color: pink;
+        }
+        span {
+            color: gold;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +80,86 @@
                                 <td>
                                     <!-- div используется для определения крупного блока на странице,
                                     span — для небольшого элемента на строке.  -->
-                                <span></span>
+                                <span>Выбор параметров точки:</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <span id="xTitle">Координата X:</span>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select name="X" id = "xSelectorStyle"  required = "required" size="3">
+                                                    <option class="xClicked" value="-4">-4</option>
+                                                    <option class="xClicked" value="-3">-3</option>
+                                                    <option class="xClicked" value="-2">-2</option>
+                                                    <option class="xClicked" value="-1">-1</option>
+                                                    <option class="xClicked" value="0">0</option>
+                                                    <option class="xClicked" value="1">1</option>
+                                                    <option class="xClicked" value="2">2</option>
+                                                    <option class="xClicked" value="3">3</option>
+                                                    <option class="xClicked" value="4">4</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <span id="yTitle">Координата Y:</span>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input id="yTextField" class="selectingAreas" type="text" name="Y"
+                                                       tabindex="3"
+                                                       placeholder="(-5;3)" required>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <span id="rTitle">Параметр R:</span>
+                                        </tr>
+                                        <tr>
+                                            <td id="rPadding">
+                                            <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
+                                                       value="1" required>
+                                                <span>1</span>
+                                            </span>
+                                                <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
+                                                       value="2">
+                                                <span>2</span>
+                                            </span>
+                                                <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
+                                                       value="3">
+                                                <span>3</span>
+                                            </span>
+                                                <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
+                                                       value="4">
+                                                <span>4</span>
+                                            </span>
+                                                <span class="clickedElement">
+                                                <input class="rRadio" type="radio" name="R" tabindex="1"
+                                                       placeholder="Параметр R"
+                                                       value="5">
+                                                <span>5</span>
+                                            </span>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         </table>
