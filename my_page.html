@@ -4,44 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <!-- Заголовок - отображается как вкладка в браузере  -->
-    <title>My First Web Lab ^. .^ &#x1f497;</title>
+   <!-- <title>My First Web Lab ^. .^ &#x1f497;</title> -->
+    <title>My First Web Lab ^. .^ &#129293;</title>
     <!-- Здесь будем задавать стиль на CSS -->
     <style>
         /* Расположим все содержимое body по центру страницы */
         body{
             text-align: center;
-            background-color: #383838;
+            background-image: url(1647486147_14-abrakadabra-fun-p-geometricheskii-fon-dlya-prezentatsii-15.jpg);
         }
 
         /* пример селектора идентификатора -- может присваиваться только 1 элементу */
         #clock {
-            color: gold;
+            color: white;
             font-size: 40px;
             font-family: Cursive;
             font-weight: bold;
+            padding-left: 800px;
         }
         /* header div и header div p -- селекторы потомств */
         /* здесь же задан общий вид шапки, см тз */
         header div p {
-            color: deepskyblue;
+            color: white;
             font-size: 30px;
+            border: 0px;
         }
         header div {
-            color: hotpink;
+            background-color: #2AA5A0;
+            background-image: linear-gradient(to right, black, black);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-size: 50px;
             font-family: Cursive;
         }
         .xClicked {
-            background-color: hotpink;
+            background-color: blanchedalmond;
         }
         .xClicked:hover {
-            background-color: pink;
+            background-color: burlywood;
         }
         #xSelectorStyle {
             background-color: pink;
         }
         span {
-            color: gold;
+            color: black;
         }
     </style>
 </head>
@@ -65,14 +71,11 @@
                     <div id="clock">00:00:00</div>
                 </td>
             </tr>
-            <tr>
                 <td>
                     <div>
                         <img src="area.png">
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div>
                         <table>
